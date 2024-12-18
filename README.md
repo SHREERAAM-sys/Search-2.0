@@ -35,9 +35,11 @@ This tool simplifies code exploration, making it ideal for developers managing l
 ---
 
 
-## Tool Demo
+## Project Overview and Tool Demo Video
 
-[![CodeSearchTool Demo](https://img.youtube.com/vi/yQ2MKvpvHro/0.jpg)](https://www.youtube.com/watch?v=yQ2MKvpvHro)
+In this video, we walk you through the features of Search2.0, a cutting-edge system designed for natural language-based search across local files. Watch as we demonstrate how the PDFSearchTool uses advanced models like ColPali for efficient document searches, and how the CodeSearchTool helps developers find relevant code snippets using vector embeddings and cosine similarity. Get a detailed explanation of the architecture and capabilities behind these tools in action.
+
+[![Search 2.0 Demo](https://img.youtube.com/vi/yQ2MKvpvHro/0.jpg)](https://www.youtube.com/watch?v=yQ2MKvpvHro)
 
 
 ## Evaluation
