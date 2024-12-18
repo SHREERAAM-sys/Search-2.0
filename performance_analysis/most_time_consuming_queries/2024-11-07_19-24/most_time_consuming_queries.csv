@@ -1,0 +1,13 @@
+"query","total_time","calls","mean","percentage_cpu"
+"CREATE INDEX flattened_embedding_index ON flattene","2962.78","1","2962.78","51.83"
+"INSERT INTO flattened_embedding (vector_embedding,","1727.69","65","26.58","30.22"
+"INSERT INTO embedding (vector_embedding, last_modi","505.09","65","7.77","8.84"
+"WITH hamming_results AS (
+            SELECT *
+   ","413.38","1","413.38","7.23"
+"ANALYZE flattened_embedding","45.81","1","45.81","0.80"
+"INSERT INTO flattened_embedding (vector_embedding,","34.59","65","0.53","0.61"
+"INSERT INTO folder (folder_name, folder_path, crea","11.27","65","0.17","0.20"
+"INSERT INTO page (page_number, text_content, binar","5.88","65","0.09","0.10"
+"INSERT INTO file (filename, filepath, filetype, to","1.83","6","0.30","0.03"
+"SELECT folder.id, folder.folder_name, folder.folde","1.57","66","0.02","0.03"

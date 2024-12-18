@@ -1,0 +1,52 @@
+services:
+    fastapi:
+        build: .
+        container_name: colpali-search
+        depends_on:
+            db:
+                condition: service_healthy
+        networks:
+            - app-network
+        volumes:
+            - ./:/code:ro
+        env_file:
+            - .env
+        environment:
+            - DATABASE_URL=${DATABASE_URL}
+            - PYTHONPATH=/code
+        ports:
+            - '8000:8000'
+        command: >
+            sh -c "alembic upgrade head && fastapi run app.py --port 8000 --workers 4"
+
+    db:
+        image: pgvector/pgvector:pg17
+        restart: always
+        volumes:
+            - postgres_data:/var/lib/postgresql/data/
+            - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+        ports:
+            - 5432:5432
+        networks:
+            - app-network
+        env_file:
+            - .env
+        environment:
+            - POSTGRES_USER=${POSTGRES_USER}
+            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+            - POSTGRES_DB=${POSTGRES_DB}
+        entrypoint: sh -c "chmod 644 /docker-entrypoint-initdb.d/init.sql && docker-entrypoint.sh postgres"
+        healthcheck:
+            test:
+                [
+                    'CMD-SHELL',
+                    'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}',
+                ]
+            interval: 5s
+            timeout: 5s
+            retries: 5
+networks:
+    app-network:
+
+volumes:
+    postgres_data:

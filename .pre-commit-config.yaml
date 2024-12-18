@@ -1,0 +1,31 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: "v4.6.0"
+    hooks:
+      - id: check-toml
+      - id: check-yaml
+      - id: check-json
+      - id: end-of-file-fixer
+        exclude: \.json$
+        files: \.py$
+      - id: trailing-whitespace
+      - id: mixed-line-ending
+
+  - repo: https://github.com/psf/black
+    rev: 24.8.0
+    hooks:
+      - id: black
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.5
+    hooks:
+      - id: ruff
+        args:
+          ["--fix"]
+
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.1.1
+    hooks:
+      - id: flake8
+        args: ["--ignore=E203,W503", "--max-line-length=120"]
+        language_version: python3

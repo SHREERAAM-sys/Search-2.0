@@ -1,0 +1,15 @@
+"userid","dbid","query","queryid","mean_exec_time","shared_blk_read_time","shared_blk_write_time"
+"searchagent_user",24577,"INSERT INTO flattened_embedding (vector_embedding,","-1386426994544112624","8103.57152","0.145708","778.147306"
+"friedahuang",24577,"CREATE INDEX ON flattened_embedding
+            US","7290162436664165944","2731.995042","3.734333","21.30058"
+"searchagent_user",24577,"INSERT INTO embedding (vector_embedding, last_modi","-6589407175516613203","5.3162198769230775","0.609041","19.134115"
+"friedahuang",24577,"SELECT n.nspname as ""schema"",
+        p.proname as","213469735157586057","61.768499999999996","16.498242","0"
+"searchagent_user",24577,"INSERT INTO flattened_embedding (vector_embedding,","7330261002774462029","232.10296287692313","0","12.594146999999998"
+"friedahuang",24577,"TRUNCATE flattened_embedding RESTART IDENTITY CASC","7581308794672424868","23.417208","10.223461","0.429124"
+"searchagent_user",24577,"ANALYZE flattened_embedding","-705638667148400120","237.220417","3.406918","0"
+"friedahuang",24577,"DROP FUNCTION IF EXISTS hamming(halfvec[])","-1505281116349058364","3.2005","2.908958","0"
+"friedahuang",24577,"SELECT
+          tbl.schemaname,
+          tbl.tab","-1356399502911624924","7.345666","2.855208","0"
+"friedahuang",24577,"CREATE OR REPLACE FUNCTION hamming(query halfvec[]","7363759967977168518","4.097833","2.786584","0"

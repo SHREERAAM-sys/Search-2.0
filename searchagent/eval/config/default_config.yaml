@@ -1,0 +1,26 @@
+dataset:
+ source: ""
+ file_type: pdf
+ format:
+  - pdf
+  - png
+
+embedding_model: NV-Embed-v2
+
+retrieval:
+ strategy: hybrid
+ lexical:
+  method: bm25
+  top_k: 20
+
+ semantic:
+  method: cosine_similarity
+  top_k: 20
+  options:
+   - cosine_similarity
+   - dot_product
+   - euclidean_distance
+
+reranking:
+ model: bge-reranker-v2-m3
+ top_k: 5

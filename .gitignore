@@ -172,3 +172,4 @@ poetry.lock
 alembic/script.py.mako
 .vscode
 .idea/
+.idea

@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "code-search"
+version = "0.1.0"
+description = ""
+authors = ["shreeraam-sys <shreeraamr@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+alembic = "^1.14.0"
+fastapi = "^0.115.5"
+uvicorn = "^0.32.1"
+sqlalchemy = "^2.0.36"
+pydantic = {extras = ["dotenv"], version = "^2.10.1"}
+faiss-cpu = "^1.9.0.post1"
+openai = "^1.55.0"
+python-multipart = "^0.0.17"
+python-dotenv = "^1.0.1"
+psycopg2 = "^2.9.10"
+sentence-transformers = "^3.3.1"
+pydantic-settings = "^2.6.1"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.8.0"
+black = "^24.10.0"
+pytest = "^8.3.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

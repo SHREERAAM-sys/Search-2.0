@@ -1,0 +1,67 @@
+"userid","dbid","queryid","query","shared_blks_hit","shared_blks_dirtied","temp_blks_read","temp_blks_written","total_exec_time"
+"friedahuang",24577,"-440999186546595393","select
+    userid::regrole,
+    dbid,
+    queryid,
+    substring(query, $1, $2) as query
+from
+    pg_stat_statements
+order by
+    (shared_blks_hit + shared_blks_dirtied) desc
+limit
+    $3","0","0","0","0","1.703084"
+"searchagent_user",24577,"-705638667148400120","ANALYZE flattened_embedding","3374","18","0","0","62.36875"
+"searchagent_user",24577,"1423323916069130847","select current_schema()","3","0","0","0","0.046416"
+"friedahuang",24577,"7363759967977168518","CREATE OR REPLACE FUNCTION hamming(query halfvec[])
+        RETURNS TABLE (
+            embedding_id integer,
+            query halfvec(128),
+            vector_embedding halfvec(128),
+            hamming_dist integer
+        ) AS $$
+            WITH queries AS (
+                SELECT unnest(query) AS query
+            )
+            SELECT
+                fe.embedding_id,
+                q.query,
+                fe.vector_embedding,
+                binary_quantize(fe.vector_embedding)::bit(128) <~>
+                binary_quantize(q.query) AS hamming_dist
+            FROM
+                queries q
+            CROSS JOIN
+                flattened_embedding fe
+            ORDER BY
+                hamming_dist ASC
+            LIMIT 20
+        $$ LANGUAGE SQL","236","7","0","0","1.220625"
+"searchagent_user",24577,"1868293357906590907","ANALYZE file","51","6","0","0","0.167375"
+"searchagent_user",24577,"7879598175103444964","ANALYZE folder","34","3","0","0","0.529458"
+"searchagent_user",24577,"-676052553025704055","SELECT file.id, file.filename, file.filepath, file.filetype, file.total_pages, file.summary, file.last_modified, file.created_at, file.folder_id
+FROM file
+WHERE file.filepath = $1::VARCHAR","64","0","0","0","1.2345840000000006"
+"searchagent_user",24577,"-8618816900476516531","INSERT INTO file (filename, filepath, filetype, total_pages, summary, last_modified, created_at, folder_id) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::INTEGER, $5::VARCHAR, $6::VARCHAR, $7::VARCHAR, $8::INTEGER) RETURNING file.id","50","4","0","0","1.2980410000000002"
+"friedahuang",24577,"-6974599087529466469","select
+    userid::regrole,
+    dbid,
+    queryid,
+    substring(query, $1, $2) as query,
+    shared_blks_hit,
+    shared_blks_read,
+    CASE
+        WHEN (shared_blks_hit + shared_blks_read) > $3 THEN round(
+            (
+                shared_blks_hit::numeric / (shared_blks_hit + shared_blks_read)
+            ) * $4,
+            $5
+        )
+        ELSE $6
+    END AS cache_hit_ratio
+from
+    pg_stat_statements
+order by
+    cache_hit_ratio desc
+limit
+    $7","0","0","0","0","0.718792"
+"friedahuang",24577,"-1505281116349058364","DROP FUNCTION IF EXISTS hamming(halfvec[])","183","2","0","0","0.316167"

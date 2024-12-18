@@ -1,0 +1,14 @@
+[
+    {
+        "metric": "ram_usage",
+        "function_name": "convert_pdf2image_from_dir",
+        "value": "RAM Usage - Current: 0.86 MB, Peak: 0.89 MB",
+        "custom_msg": null
+    },
+    {
+        "metric": "cpu_latency",
+        "function_name": "convert_pdf2image_from_dir",
+        "value": "CPU Latency: 643.443 ms",
+        "custom_msg": null
+    }
+]

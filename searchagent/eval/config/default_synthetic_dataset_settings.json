@@ -1,0 +1,6 @@
+{
+  "test_size": 20,
+  "file_type": "pdf",
+  "output_filename": "cvpr2019_5papers_testset_12q.csv",
+  "test_data_source": "/Users/friedahuang/Documents/csye7230/data/test_sources/pdfs"
+}

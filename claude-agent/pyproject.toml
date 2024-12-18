@@ -1,0 +1,23 @@
+[project]
+name = "claude-agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=0.40.0",
+    "pytest>=8.3.4",
+    "python-dotenv>=1.0.1",
+    "requests>=2.32.3",
+    "typer>=0.15.1",
+]
+
+[tool.uv.workspace]
+members = ["claude-agent"]
+
+[project.scripts]
+searchagent = "claude_agent.main:app"
+
+[tool.uv]
+package = true
+

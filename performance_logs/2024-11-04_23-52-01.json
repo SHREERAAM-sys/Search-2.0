@@ -1,0 +1,41 @@
+[
+    {
+        "_comment": "nb_iters=5, input_dir=pdfs"
+    },
+    {
+        "metric": "ram_usage",
+        "function_name": "convert_pdf2image_from_dir",
+        "value": "RAM Usage - Current: 1.09 MB, Peak: 1.20 MB",
+        "custom_msg": null
+    },
+    {
+        "metric": "cpu_latency",
+        "function_name": "convert_pdf2image_from_dir",
+        "value": "CPU Latency: 3130.308 ms",
+        "custom_msg": null
+    },
+    {
+        "metric": "gpu_latency",
+        "function_name": "_embed",
+        "value": "GPU Average Latency (over 5 iterations): 135.491 ms",
+        "custom_msg": null
+    },
+    {
+        "metric": "vram_usage",
+        "function_name": "embed_query",
+        "value": "VRAM currently allocated memory: 5653.22 MB | Total memory allocated by the driver: 6016.66 MB",
+        "custom_msg": null
+    },
+    {
+        "metric": "vram_usage",
+        "function_name": "embed_images",
+        "value": "VRAM currently allocated memory: 5653.22 MB | Total memory allocated by the driver: 6016.66 MB",
+        "custom_msg": null
+    },
+    {
+        "metric": "gpu_latency",
+        "function_name": "_embed",
+        "value": "GPU Average Latency (over 5 iterations): 158272.487 ms",
+        "custom_msg": null
+    }
+]

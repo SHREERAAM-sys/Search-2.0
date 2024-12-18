@@ -1,0 +1,13 @@
+"userid","dbid","queryid","query","shared_blks_hit","shared_blks_read","cache_hit_ratio"
+"friedahuang",24577,"-1505281116349058364","DROP FUNCTION IF EXISTS hamming(halfvec[])","183","0","100.00"
+"searchagent_user",24577,"1423323916069130847","select current_schema()","3","0","100.00"
+"friedahuang",24577,"7363759967977168518","CREATE OR REPLACE FUNCTION hamming(query halfvec[]","235","0","100.00"
+"searchagent_user",24577,"-705638667148400120","ANALYZE flattened_embedding","3378","0","100.00"
+"searchagent_user",24577,"7879598175103444964","ANALYZE folder","34","0","100.00"
+"searchagent_user",24577,"-676052553025704055","SELECT file.id, file.filename, file.filepath, file","64","0","100.00"
+"searchagent_user",24577,"-8618816900476516531","INSERT INTO file (filename, filepath, filetype, to","50","0","100.00"
+"friedahuang",24577,"-4494540583514571521","WITH hamming_results AS (
+            SELECT *
+   ","3420","0","100.00"
+"searchagent_user",24577,"1868293357906590907","ANALYZE file","51","0","100.00"
+"searchagent_user",24577,"-1386426994544112624","INSERT INTO flattened_embedding (vector_embedding,","461022","1","100.00"

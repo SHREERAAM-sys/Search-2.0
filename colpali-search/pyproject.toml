@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "colpali-search"
+version = "0.1.0"
+description = ""
+authors = ["Frieda (Jingying) Huang <jingyingfhuang@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+loguru = "^0.7.2"
+python-dotenv = "^1.0.1"
+datasets = "^3.0.0"
+tqdm = "^4.67.0"
+colpali-engine = "^0.3.3"
+torch = "^2.4.1"
+pdf2image = "^1.17.0"
+sqlalchemy = "^2.0.35"
+alembic = "^1.13.3"
+psycopg = {extras = ["binary", "pool"], version = "^3.2.3"}
+ml-dtypes = "^0.5.0"
+watchdog = "^5.0.3"
+pydantic = "^2.9.2"
+pydantic-settings = "^2.6.1"
+fastapi = {extras = ["standard"], version = "^0.115.5"}
+fastapi-cli = "^0.0.5"
+greenlet = "^3.1.1"
+bcrypt = "^4.2.1"
+pgvector = "^0.3.6"
+
+
+[tool.poetry.group.test.dependencies]
+pytest-asyncio = "^0.24.0"
+pytest = "^8.3.3"
+pytest-sugar = "^1.0.0"
+anyio = "^4.6.2.post1"
+trio = "^0.27.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,17 @@
+[
+    {
+        "_comment": "Embed 100 pages from the huggingface dataset: vidore/syntheticDocQA_artificial_intelligence_test"
+    },
+    {
+        "metric": "ram_usage",
+        "function_name": "retrieve_pdfImage_from_vidore",
+        "value": "RAM Usage - Current: 282.27 MB, Peak: 295.14 MB",
+        "custom_msg": null
+    },
+    {
+        "metric": "cpu_latency",
+        "function_name": "retrieve_pdfImage_from_vidore",
+        "value": "CPU Latency: 32881.650 ms",
+        "custom_msg": null
+    }
+]

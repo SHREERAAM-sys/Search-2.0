@@ -1,0 +1,62 @@
+"userid","dbid","queryid","query","shared_blks_hit","shared_blks_dirtied","temp_blks_read","temp_blks_written","total_exec_time"
+"searchagent_user",24577,"-705638667148400120","ANALYZE flattened_embedding","3378","18","0","0","25.561292"
+"searchagent_user",24577,"1423323916069130847","select current_schema()","3","0","0","0","0.022166"
+"friedahuang",24577,"7363759967977168518","CREATE OR REPLACE FUNCTION hamming(query halfvec[])
+        RETURNS TABLE (
+            embedding_id integer,
+            query halfvec(128),
+            vector_embedding halfvec(128),
+            hamming_dist integer
+        ) AS $$
+            WITH queries AS (
+                SELECT unnest(query) AS query
+            )
+            SELECT
+                fe.embedding_id,
+                q.query,
+                fe.vector_embedding,
+                binary_quantize(fe.vector_embedding)::bit(128) <~>
+                binary_quantize(q.query) AS hamming_dist
+            FROM
+                queries q
+            CROSS JOIN
+                flattened_embedding fe
+            ORDER BY
+                hamming_dist ASC
+            LIMIT 20
+        $$ LANGUAGE SQL","235","7","0","0","0.729458"
+"searchagent_user",24577,"1868293357906590907","ANALYZE file","51","6","0","0","0.095541"
+"searchagent_user",24577,"7879598175103444964","ANALYZE folder","34","3","0","0","0.208042"
+"searchagent_user",24577,"-676052553025704055","SELECT file.id, file.filename, file.filepath, file.filetype, file.total_pages, file.summary, file.last_modified, file.created_at, file.folder_id
+FROM file
+WHERE file.filepath = $1::VARCHAR","64","0","0","0","0.661756"
+"searchagent_user",24577,"-8618816900476516531","INSERT INTO file (filename, filepath, filetype, total_pages, summary, last_modified, created_at, folder_id) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::INTEGER, $5::VARCHAR, $6::VARCHAR, $7::VARCHAR, $8::INTEGER) RETURNING file.id","50","5","0","0","1.252832"
+"friedahuang",24577,"-4494540583514571521","WITH hamming_results AS (
+            SELECT *
+            FROM (
+                SELECT *
+                FROM hamming($1)
+            )
+            ORDER BY vector_embedding <=> query
+            LIMIT $2
+        )
+        SELECT
+            p.id AS page_id,
+            p.*,
+            f.id AS file_id,
+            f.*
+        FROM
+            hamming_results hr
+        JOIN
+            embedding e ON e.id = hr.embedding_id
+        JOIN
+            page p ON p.id = e.page_id
+        JOIN
+            file f ON f.id = p.file_id","3420","0","0","0","319.629166"
+"searchagent_user",24577,"-2638876075463472844","SELECT
+    typname AS name, oid, typarray AS array_oid,
+    oid::regtype::text AS regtype, typdelim AS delimiter
+FROM pg_type t
+WHERE t.oid = to_regtype($1)
+ORDER BY t.oid","0","0","0","0","0.006749"
+"friedahuang",24577,"-1505281116349058364","DROP FUNCTION IF EXISTS hamming(halfvec[])","183","2","0","0","0.216042"
